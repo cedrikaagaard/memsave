@@ -14,7 +14,7 @@
       "image": "cedrikaagaard/memsave-api",
       "hostname": "api",
       "essential": false,
-      "memory": 128
+      "memory": 1024
     },
 
     {
