@@ -21,24 +21,13 @@ after_success:
   # Take those images and push them to docker hub
 
 deploy:
-  - provider: elasticbeanstalk
-    region: eu-north-1
-    app: memsave
-    env: Memsave-production-env
+  provider: elasticbeanstalk
+  region: eu-north-1
+  app: memsave
+  env: Memsave-test-env
     bucket_name: elasticbeanstalk-eu-north-1-872583650794
-    bucket_path: memsave-production
+    bucket_path: memsave-test
     on:
-      branch: master
+      branch: test
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
-
-  - provider: elasticbeanstalk
-      region: eu-north-1
-      app: memsave
-      env: Memsave-test-env
-      bucket_name: elasticbeanstalk-eu-north-1-872583650794
-      bucket_path: memsave-test
-      on:
-        branch: test
-      access_key_id: $AWS_ACCESS_KEY
-      secret_access_key: $AWS_SECRET_KEY
