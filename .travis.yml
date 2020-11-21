@@ -17,7 +17,7 @@ after_success:
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push cedrikaagaard/memsave-frontend
-  - docker push cedrikaagaard/multi-api
+  - docker push cedrikaagaard/memsave-api
   - docker push cedrikaagaard/memsave-router
   # Take those images and push them to docker hub
 
