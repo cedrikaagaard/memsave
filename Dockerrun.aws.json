@@ -6,7 +6,7 @@
       "image": "cedrikaagaard/memsave-frontend",
       "hostname": "frontend",
       "essential": false,
-      "memory": 512
+      "memory": 52
     },
 
     {
@@ -14,14 +14,14 @@
       "image": "cedrikaagaard/memsave-api",
       "hostname": "api",
       "essential": false,
-      "memory": 512
+      "memory": 52
     },
 
     {
       "name": "router",
       "image": "cedrikaagaard/memsave-router",
       "essential": true,
-      "memory": 512,
+      "memory": 52,
       "portMappings": [
         {
           "hostPort": 80,
