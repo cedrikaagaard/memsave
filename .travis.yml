@@ -1,0 +1,44 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t cedrikaagaard/memsave-frontend-test -f ./frontend/Dockerfile.dev ./frontend
+
+script:
+  - docker run -e CI=true cedrikaagaard/memsave-frontend-test npm test
+
+after_success:
+  - docker build -t cedrikaagaard/memsave-frontend ./frontend
+  - docker build -t cedrikaagaard/memsave-api ./api
+  - docker build -t cedrikaagaard/memsave-router ./router
+
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push cedrikaagaard/memsave-frontend
+  - docker push cedrikaagaard/multi-api
+  - docker push cedrikaagaard/memsave-router
+  # Take those images and push them to docker hub
+
+deploy:
+  - provider: elasticbeanstalk
+    region: eu-north-1
+    app: memsave
+    env: Memsave-production-env
+    bucket_name: elasticbeanstalk-eu-north-1-872583650794
+    bucket_path: memsave-production
+    on:
+      branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+
+  - provider: elasticbeanstalk
+      region: eu-north-1
+      app: memsave
+      env: Memsave-test-env
+      bucket_name: elasticbeanstalk-eu-north-1-872583650794
+      bucket_path: memsave-test
+      on:
+        branch: test
+      access_key_id: $AWS_ACCESS_KEY
+      secret_access_key: $AWS_SECRET_KEY
