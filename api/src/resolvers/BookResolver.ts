@@ -7,10 +7,10 @@ import {UpdateBookInput} from "../models/UpdateBookInput";
 export class BookResolver {
     @Query(() => [Book])
     books() {
-        return Book.find()
+        return [];
     }
 
-    @Mutation(() => Book)
+    /*@Mutation(() => Book)
     async createBook(@Arg("data") data: CreateBookInput) {
         const book = Book.create(data);
         await book.save();
@@ -37,5 +37,5 @@ export class BookResolver {
         if (!book) throw new Error("Book not found!");
         await book.remove();
         return true;
-    }
+    }*/
 }
