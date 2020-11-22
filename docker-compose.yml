@@ -1,9 +1,13 @@
 version: '3'
 services:
-  frontend:
-    build:
-      dockerfile: Dockerfile
-      context: ./frontend
+  postgres:
+    image: 'postgres:latest'
+  router:
+    restart: always
+    image: cedrikaagaard/memsave-router
     ports:
-      - '80:3000'
-    mem_limit: 128m
+      - '80:80'
+  frontend:
+    image: cedrikaagaard/memsave-frontend
+  api:
+    image: cedrikaagaard/memsave-api
