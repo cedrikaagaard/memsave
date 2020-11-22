@@ -7,7 +7,7 @@ import GraphComp from "./GraphComp";
 function App() {
   return (
     <div className="App">
-      <GraphComp/>
+      the build process is working
     </div>
   );
 }
