@@ -20,8 +20,8 @@
   },
   "scripts": {
     "start": "rm tsconfig.json && react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "rm tsconfig.json && react-scripts build",
+    "test": "rm tsconfig.json && react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
