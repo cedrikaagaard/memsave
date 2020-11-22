@@ -1,7 +1,9 @@
-version: '2.4'
+version: '3'
 services:
   frontend:
-    image: "cedrikaagaard/memsave-frontend"
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend
     ports:
       - '80:3000'
     mem_limit: 128m
